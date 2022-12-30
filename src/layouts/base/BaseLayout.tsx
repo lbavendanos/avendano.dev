@@ -1,7 +1,11 @@
+import { cn } from '@/lib/utils/helpers'
+import { Inter } from '@next/font/google'
 import Container from '@/lib/components/Container'
 import Separator from '@/lib/components/Separator'
 import BaseLayoutFooter from './components/BaseLayoutFooter'
 import BaseLayoutNavbar from './components/BaseLayoutNavbar'
+
+const inter = Inter({ subsets: ['latin'] })
 
 export interface BaseLayoutProps {
   children?: React.ReactNode
@@ -9,7 +13,7 @@ export interface BaseLayoutProps {
 
 export default function BaseLayout({ children }: BaseLayoutProps) {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className={cn(inter.className, 'flex flex-col min-h-screen')}>
       <header>
         <Container>
           <BaseLayoutNavbar />
