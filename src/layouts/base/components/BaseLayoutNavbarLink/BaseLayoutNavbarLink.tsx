@@ -16,7 +16,7 @@ export default function BaseLayoutNavbarLink({
   return (
     <Link
       {...props}
-      href="/"
+      href={href}
       className={cn(
         isActive
           ? 'font-semibold text-gray-800 dark:text-gray-200'
