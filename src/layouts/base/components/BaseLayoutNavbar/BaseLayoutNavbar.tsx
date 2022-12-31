@@ -1,4 +1,5 @@
 import BaseLayoutNavbarLink from '../BaseLayoutNavbarLink'
+import BaseLayoutNavbarThemeButton from '../BaseLayoutNavbarThemeButton'
 
 export default function BaseLayoutNavbar() {
   return (
@@ -11,7 +12,7 @@ export default function BaseLayoutNavbar() {
           <BaseLayoutNavbarLink href="/blog">Blog</BaseLayoutNavbarLink>
         </li>
       </ul>
-      <button>Theme</button>
+      <BaseLayoutNavbarThemeButton />
     </nav>
   )
 }

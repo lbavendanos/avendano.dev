@@ -13,7 +13,13 @@ export interface BaseLayoutProps {
 
 export default function BaseLayout({ children }: BaseLayoutProps) {
   return (
-    <div className={cn(inter.className, 'flex flex-col min-h-screen')}>
+    <div
+      className={cn(
+        inter.className,
+        'flex flex-col min-h-screen',
+        'bg-gray-50 dark:bg-gray-900'
+      )}
+    >
       <header>
         <Container>
           <BaseLayoutNavbar />
