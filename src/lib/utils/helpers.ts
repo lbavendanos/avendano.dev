@@ -6,10 +6,10 @@ import spotify from '@/config/spotify'
  * Gets the specified configuration value.
  *
  * @param {string} path - The path of the configuration to get.
- * @param {any} [defaultValue] - The value returned if the resolved value is undefined.
- * @returns {any} Returns the resolved value.
+ * @param {T} [defaultValue] - The value returned if the resolved value is undefined.
+ * @returns {T} Returns the resolved value.
  */
-export function config(path: string, defaultValue?: any): any {
+export function config<T = any>(path: string, defaultValue?: T): T {
   return objGet({ app, spotify }, path, defaultValue)
 }
 
