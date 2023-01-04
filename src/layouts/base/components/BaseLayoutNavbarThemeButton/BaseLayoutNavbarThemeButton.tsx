@@ -20,6 +20,7 @@ export default function BaseLayoutNavbarThemeButton() {
         'rounded-lg hover:ring-2 ring-gray-300 transition-all'
       )}
       onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
+      aria-label="Toggle Dark Mode"
     >
       {mounted && (
         <svg
