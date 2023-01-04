@@ -1,5 +1,6 @@
 import { objGet } from './object'
 import app from '@/config/app'
+import spotify from '@/config/spotify'
 
 /**
  * Gets the specified configuration value.
@@ -9,7 +10,7 @@ import app from '@/config/app'
  * @returns {any} Returns the resolved value.
  */
 export function config(path: string, defaultValue?: any): any {
-  return objGet({ app }, path, defaultValue)
+  return objGet({ app, spotify }, path, defaultValue)
 }
 
 export { default as cn } from 'clsx'
