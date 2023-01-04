@@ -1,4 +1,4 @@
-import { fetcher } from './htpp'
+import { fetcher } from './http'
 import useBaseSWR, {
   Key,
   SWRResponse,

@@ -1,15 +1,17 @@
 import { config } from './helpers'
+import { TokenResponse } from '../types/spotify'
 
-const TOKEN_ENDPOINT = `https://accounts.spotify.com/api/token`
-const NOW_PLAYING_ENDPOINT = `https://api.spotify.com/v1/me/player/currently-playing`
+const TOKEN_ENDPOINT = 'https://accounts.spotify.com/api/token'
+const CURRENTLY_PLAYING_ENDPOINT =
+  'https://api.spotify.com/v1/me/player/currently-playing'
 
-const id = config('spotify.id')
-const secret = config('spotify.secret')
-const token = config('spotify.token')
+async function getToken(): Promise<TokenResponse> {
+  const id = config('spotify.id')
+  const secret = config('spotify.secret')
+  const token = config('spotify.token')
 
-const basic = Buffer.from(`${id}:${secret}`).toString('base64')
+  const basic = btoa(`${id}:${secret}`)
 
-async function getAccessToken() {
   const response = await fetch(TOKEN_ENDPOINT, {
     method: 'POST',
     headers: {
@@ -25,10 +27,10 @@ async function getAccessToken() {
   return response.json()
 }
 
-export async function getNowPlaying() {
-  const { access_token } = await getAccessToken()
+export async function getCurrentlyPlaying() {
+  const { access_token } = await getToken()
 
-  return fetch(NOW_PLAYING_ENDPOINT, {
+  return fetch(CURRENTLY_PLAYING_ENDPOINT, {
     headers: {
       Authorization: `Bearer ${access_token}`,
     },

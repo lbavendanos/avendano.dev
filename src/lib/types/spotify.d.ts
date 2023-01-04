@@ -1,4 +1,11 @@
-export interface SpotifyResponse {
+export interface TokenResponse {
+  access_token?: string
+  token_type?: string
+  expires_in?: number
+  scope?: string
+}
+
+export interface CurrentlyPlayingResponse {
   timestamp?: number
   context?: null
   progress_ms?: number

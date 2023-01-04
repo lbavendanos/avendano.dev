@@ -1,29 +1,42 @@
-import { getNowPlaying } from '@/lib/utils/spotify'
-import { NowPlayingSong, SpotifyResponse } from '@/lib/types/spotify'
-import type { NextApiRequest, NextApiResponse } from 'next'
+import { getCurrentlyPlaying } from '@/lib/utils/spotify'
+import { CurrentlyPlayingResponse } from '@/lib/types/spotify'
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<NowPlayingSong>
-) {
-  const response = await getNowPlaying()
+export const config = {
+  runtime: 'experimental-edge',
+}
+
+export default async function handler() {
+  const response = await getCurrentlyPlaying()
 
   if (response.status === 204 || response.status > 400)
-    return res.status(200).json({})
+    return new Response('{}', {
+      status: 200,
+      headers: {
+        'content-type': 'application/json',
+      },
+    })
 
-  const spotifyResponse: SpotifyResponse = await response.json()
-  const { item } = spotifyResponse
+  const currentlyPlayingResponse: CurrentlyPlayingResponse =
+    await response.json()
+  const { item } = currentlyPlayingResponse
 
-  if (!item) return res.status(200).json({})
+  if (!item)
+    return new Response('{}', {
+      status: 200,
+      headers: {
+        'content-type': 'application/json',
+      },
+    })
 
   const name = item.name
   const artist = item.artists?.map((artist) => artist.name).join(', ')
   const url = item.external_urls?.spotify
 
-  res.setHeader(
-    'Cache-Control',
-    'public, s-maxage=60, stale-while-revalidate=30'
-  )
-
-  return res.status(200).json({ name, artist, url })
+  return new Response(JSON.stringify({ name, artist, url }), {
+    status: 200,
+    headers: {
+      'content-type': 'application/json',
+      'Cache-Control': 'public, s-maxage=60, stale-while-revalidate=30',
+    },
+  })
 }
