@@ -1,16 +1,10 @@
 import { getNowPlaying } from '@/lib/utils/spotify'
-import { SpotifyResponse } from '@/lib/types/spotify'
+import { NowPlayingSong, SpotifyResponse } from '@/lib/types/spotify'
 import type { NextApiRequest, NextApiResponse } from 'next'
-
-type Data = {
-  name?: string
-  artist?: string
-  url?: string
-}
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Data>
+  res: NextApiResponse<NowPlayingSong>
 ) {
   const response = await getNowPlaying()
 

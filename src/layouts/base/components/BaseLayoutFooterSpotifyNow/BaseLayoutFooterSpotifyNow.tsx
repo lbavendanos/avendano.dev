@@ -1,7 +1,8 @@
 import { useSWR } from '@/lib/utils/swr'
+import { NowPlayingSong } from '@/lib/types/spotify'
 
 export default function BaseLayoutFooterSpotifyNow() {
-  const { data } = useSWR('/api/spotify/now')
+  const { data } = useSWR<NowPlayingSong>('/api/spotify/now')
 
   return (
     <div className="flex items-center space-x-2 w-full">
@@ -14,7 +15,7 @@ export default function BaseLayoutFooterSpotifyNow() {
       <div className="flex flex-col md:flex-row w-full max-w-full truncate">
         {data?.url ? (
           <a
-            className="text-gray-800 dark:text-gray-200 font-medium  max-w-max truncate"
+            className="font-medium max-w-max truncate text-gray-800 dark:text-gray-200"
             href={data.url}
             target="_blank"
             rel="noopener noreferrer"
@@ -22,14 +23,14 @@ export default function BaseLayoutFooterSpotifyNow() {
             {data.name}
           </a>
         ) : (
-          <p className="text-gray-800 dark:text-gray-200 font-medium">
+          <p className="font-medium text-gray-800 dark:text-gray-200">
             Not Playing
           </p>
         )}
         <span className="mx-2 text-gray-500 dark:text-gray-300 hidden md:block">
           {' – '}
         </span>
-        <p className="text-gray-500 dark:text-gray-300 max-w-max truncate">
+        <p className="max-w-max truncate text-gray-500 dark:text-gray-300">
           {data?.artist ?? 'Spotify'}
         </p>
       </div>

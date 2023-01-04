@@ -78,3 +78,9 @@ export interface Image {
 export interface ExternalIDS {
   isrc?: string
 }
+
+export interface NowPlayingSong {
+  name?: string
+  artist?: string
+  url?: string
+}
