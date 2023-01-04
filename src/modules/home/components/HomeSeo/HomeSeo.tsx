@@ -3,7 +3,7 @@ import { config } from '@/lib/utils/helpers'
 import Seo, { SeoMetas } from '@/lib/components/Seo'
 
 export default function HomeSeo() {
-  const appName = config('app.name')
+  const appName = config<string>('app.name')
   const title = appName
   const description = 'Software Developer'
   const image = ''

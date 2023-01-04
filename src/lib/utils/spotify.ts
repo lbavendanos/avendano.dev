@@ -6,9 +6,9 @@ const CURRENTLY_PLAYING_ENDPOINT =
   'https://api.spotify.com/v1/me/player/currently-playing'
 
 async function getToken(): Promise<TokenResponse> {
-  const id = config('spotify.id')
-  const secret = config('spotify.secret')
-  const token = config('spotify.token')
+  const id = config<string>('spotify.id')
+  const secret = config<string>('spotify.secret')
+  const token = config<string>('spotify.token')
 
   const basic = btoa(`${id}:${secret}`)
 
