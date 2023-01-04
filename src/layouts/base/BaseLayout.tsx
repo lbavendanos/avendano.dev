@@ -16,8 +16,7 @@ export default function BaseLayout({ children }: BaseLayoutProps) {
     <div
       className={cn(
         inter.className,
-        'min-h-[100svh] min-h-screen',
-        'flex flex-col',
+        'flex flex-col min-h-s-screen',
         'bg-gray-50 dark:bg-gray-900'
       )}
     >
