@@ -5,6 +5,7 @@ import spotify from '@/config/spotify'
 /**
  * Gets the specified configuration value.
  *
+ * @template T - The type of default value and return value
  * @param {string} path - The path of the configuration to get.
  * @param {T} [defaultValue] - The value returned if the resolved value is undefined.
  * @returns {T} Returns the resolved value.

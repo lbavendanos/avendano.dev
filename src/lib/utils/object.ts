@@ -2,6 +2,7 @@
  * Gets the value at path of object.
  * If the resolved value is undefined, the defaultValue is returned in its place.
  *
+ * @template T - The type of default value and return value
  * @param {object} object - The object to query.
  * @param {string | string[]} [path] - The path of the property to get.
  * @param {T} [defaultValue] - The value returned for undefined resolved values.
