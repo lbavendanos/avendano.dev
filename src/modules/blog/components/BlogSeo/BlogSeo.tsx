@@ -6,7 +6,7 @@ export default function BlogSeo() {
   const appName = config<string>('app.name')
   const title = `${appName} | Blog`
   const description = 'Thoughts on the software industry'
-  const image = ''
+  const image = url('/assets/common/avatar.png')
 
   const metas: SeoMetas = [
     { property: 'og:title', content: title },

@@ -6,7 +6,7 @@ export default function HomeSeo() {
   const appName = config<string>('app.name')
   const title = appName
   const description = 'Software Developer'
-  const image = ''
+  const image = url('/assets/common/avatar.png')
 
   const metas: SeoMetas = [
     { property: 'og:title', content: title },
