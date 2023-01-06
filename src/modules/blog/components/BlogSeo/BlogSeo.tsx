@@ -1,13 +1,11 @@
-import { config } from '@/lib/utils/helpers'
 import { Metas } from '@/lib/types/seo'
-import SeoCustom from '@/lib/components/SeoCustom'
+import Seo from '@/lib/components/Seo'
 
 export default function BlogSeo() {
-  const appName = config<string>('app.name')
   const metas: Metas = {
-    title: `Blog | ${appName}`,
+    title: 'Blog',
     description: 'Thoughts on the software industry',
   }
 
-  return <SeoCustom metas={metas} />
+  return <Seo metas={metas} />
 }

@@ -1,8 +1,8 @@
 import { Metas } from '@/lib/types/seo'
-import SeoCustom from '@/lib/components/SeoCustom'
+import Seo from '@/lib/components/Seo'
 
 export default function HomeSeo() {
   const metas: Metas = { description: 'Software Developer' }
 
-  return <SeoCustom metas={metas} />
+  return <Seo metas={metas} />
 }
