@@ -1,2 +1,2 @@
 export { default } from './Seo'
-export type { SeoMetas } from './Seo'
+export type { SeoMeta, SeoMetas, SeoProps } from './Seo'
