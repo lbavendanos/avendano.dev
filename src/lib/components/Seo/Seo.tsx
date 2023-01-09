@@ -1,6 +1,7 @@
 import { url } from '@/lib/utils/url'
 import { config } from '@/lib/utils/helpers'
 import { useMemo } from 'react'
+import { objClear } from '@/lib/utils/object'
 import { useRouter } from 'next/router'
 import { Metas } from '@/lib/types/seo'
 import Head from 'next/head'
@@ -34,7 +35,7 @@ export default function Seo({ metas: metasProp = {} }: SeoProps) {
       title: titleProp,
       canonical: canonicalProp,
       ...propCollection
-    } = metasProp
+    } = objClear(metasProp)
     const title = titleProp ? `${titleProp} | ${appName}` : appName
 
     return {
@@ -58,6 +59,7 @@ export default function Seo({ metas: metasProp = {} }: SeoProps) {
       { name: 'twitter:title', content: collection.title },
       { name: 'twitter:description', content: collection.description },
       { name: 'twitter:image', content: collection.image },
+      { name: 'article:published_time', content: collection.publishedAt },
     ],
     [collection]
   )

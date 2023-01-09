@@ -1,6 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
+import readingTime from 'reading-time'
 import { serialize } from 'next-mdx-remote/serialize'
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import SlugModule from '@/modules/slug/SlugModule'
@@ -28,6 +29,7 @@ export async function getStaticProps({
 
   const { content, data } = matter(source)
 
+  const readTimeResults = readingTime(content)
   const mdxSource = await serialize(content, {
     scope: data,
     parseFrontmatter: true,
@@ -41,6 +43,7 @@ export async function getStaticProps({
     props: {
       source: mdxSource,
       metas: data,
+      readingTime: readTimeResults.text,
     },
   }
 }

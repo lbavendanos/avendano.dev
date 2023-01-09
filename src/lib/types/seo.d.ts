@@ -7,5 +7,6 @@ export interface Metas {
   image?: string
   twitterCard?: string
   twitterSite?: string
+  publishedAt?: string
   canonical?: string
 }
