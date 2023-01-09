@@ -1,3 +1,5 @@
+import { blank } from './helpers'
+
 /**
  * Gets the value at path of object.
  * If the resolved value is undefined, the defaultValue is returned in its place.
@@ -28,4 +30,40 @@ export function objGet<T = any>(
   }
 
   return object as T
+}
+
+/**
+ * This method creates an object composed of the own
+ * and inherited enumerable string keyed properties
+ * of object that predicate doesn't return truthy for.
+ * The predicate is invoked with two arguments: (value, key).
+ *
+ * @template T - The type of object and return value
+ * @param {T} object - The source object.
+ * @param {(value: any) => boolean} check - The function invoked per property.
+ * @returns {T} Returns the new object.
+ */
+export function objOmitBy<T extends object>(
+  object: T,
+  check: (value: any) => boolean
+): T {
+  object = { ...object }
+
+  Object.entries(object).forEach(
+    ([key, value]) => check(value) && delete object[key as keyof object]
+  )
+
+  return object
+}
+
+/**
+ * This method delete the blank properties and
+ * creates an object with filled values
+ *
+ * @template T - The type of object and return value
+ * @param {T} object - The source object.
+ * @returns {T} Return the new object
+ */
+export function objClear<T extends object>(object: T): T {
+  return objOmitBy<T>(object, blank)
 }
