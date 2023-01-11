@@ -26,7 +26,7 @@ export default function BlogModule({
   return (
     <BaseLayout>
       <SlugSeo metas={metas} />
-      <Container className="my-10">
+      <Container className="my-4 md:my-6 lg:my-8 xl:my-10">
         <article itemType="http://schema.org/Article" itemScope>
           <header>
             <h1

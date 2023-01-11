@@ -7,7 +7,7 @@ export default function HomeModule() {
   return (
     <BaseLayout>
       <HomeSeo />
-      <Container className="my-10">
+      <Container className="my-4 md:my-6 lg:my-8 xl:my-10">
         <HomeOverview />
       </Container>
     </BaseLayout>
