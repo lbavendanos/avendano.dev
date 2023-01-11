@@ -6,11 +6,14 @@ import { serialize } from 'next-mdx-remote/serialize'
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import SlugModule from '@/modules/slug/SlugModule'
 
-export const POSTS_PATH = path.join(process.cwd(), '/src/modules/slug/posts')
+export const ARTICLES_PATH = path.join(
+  process.cwd(),
+  '/src/modules/slug/articles'
+)
 
 export async function getStaticPaths() {
   const paths = fs
-    .readdirSync(POSTS_PATH)
+    .readdirSync(ARTICLES_PATH)
     .filter((path) => /\.mdx?$/.test(path))
     .map((path) => path.replace(/\.mdx?$/, ''))
     .map((slug) => ({ params: { slug } }))
@@ -24,8 +27,8 @@ export async function getStaticPaths() {
 export async function getStaticProps({
   params,
 }: GetStaticPropsContext<{ slug: string }>) {
-  const postFilePath = path.join(POSTS_PATH, `${params?.slug}.mdx`)
-  const source = fs.readFileSync(postFilePath)
+  const articleFilePath = path.join(ARTICLES_PATH, `${params?.slug}.mdx`)
+  const source = fs.readFileSync(articleFilePath)
 
   const { content, data } = matter(source)
 
