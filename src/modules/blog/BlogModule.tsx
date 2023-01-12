@@ -16,7 +16,7 @@ export default function BlogModule({ articles }: BlogModuleProps) {
   const filteredArticles = useMemo(
     () =>
       articles.filter((article) =>
-        article.title.toLowerCase().includes(search.toLowerCase())
+        article.title?.toLowerCase().includes(search.toLowerCase())
       ),
     [articles, search]
   )

@@ -3,13 +3,11 @@ import path from 'path'
 import matter from 'gray-matter'
 import readingTime from 'reading-time'
 import { serialize } from 'next-mdx-remote/serialize'
+import { Article } from '@/lib/types/article'
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
-import SlugModule from '@/modules/slug/SlugModule'
+import ArticleModule from '@/modules/article/ArticleModule'
 
-export const ARTICLES_PATH = path.join(
-  process.cwd(),
-  '/src/modules/slug/articles'
-)
+export const ARTICLES_PATH = path.join(process.cwd(), '/database/articles')
 
 export async function getStaticPaths() {
   const paths = fs
@@ -27,14 +25,14 @@ export async function getStaticPaths() {
 export async function getStaticProps({
   params,
 }: GetStaticPropsContext<{ slug: string }>) {
-  const articleFilePath = path.join(ARTICLES_PATH, `${params?.slug}.mdx`)
-  const source = fs.readFileSync(articleFilePath)
+  const articlePath = path.join(ARTICLES_PATH, `${params?.slug}.mdx`)
+  const articleBuffer = fs.readFileSync(articlePath)
 
-  const { content, data } = matter(source)
+  const { content: articleContent, data: articleData } = matter(articleBuffer)
 
-  const readTimeResults = readingTime(content)
-  const mdxSource = await serialize(content, {
-    scope: data,
+  const readTimeResults = readingTime(articleContent)
+  const mdxSource = await serialize(articleContent, {
+    scope: articleData,
     parseFrontmatter: true,
     mdxOptions: {
       remarkPlugins: [],
@@ -42,11 +40,16 @@ export async function getStaticProps({
     },
   })
 
+  const article: Article = {
+    ...(articleData as Article),
+    url: params?.slug,
+    readingTime: readTimeResults.text,
+    mdxRemoteSerializeResult: mdxSource,
+  }
+
   return {
     props: {
-      source: mdxSource,
-      metas: data,
-      readingTime: readTimeResults.text,
+      article,
     },
   }
 }
@@ -54,5 +57,5 @@ export async function getStaticProps({
 export default function Slug(
   props: InferGetStaticPropsType<typeof getStaticProps>
 ) {
-  return <SlugModule {...props} />
+  return <ArticleModule {...props} />
 }

@@ -5,10 +5,7 @@ import { Article, Articles } from '@/lib/types/article'
 import { InferGetStaticPropsType } from 'next'
 import BlogModule from '@/modules/blog/BlogModule'
 
-export const ARTICLES_PATH = path.join(
-  process.cwd(),
-  '/src/modules/slug/articles'
-)
+export const ARTICLES_PATH = path.join(process.cwd(), '/database/articles')
 
 export async function getStaticProps() {
   const files = fs.readdirSync(ARTICLES_PATH)

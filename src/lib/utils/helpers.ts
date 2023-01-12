@@ -1,6 +1,6 @@
 import { objGet } from './object'
-import app from '@/config/app'
-import spotify from '@/config/spotify'
+import app from 'config/app'
+import spotify from 'config/spotify'
 
 /**
  * Gets the specified configuration value.
