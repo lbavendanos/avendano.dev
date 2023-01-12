@@ -1,5 +1,5 @@
-import { Metas } from '@/lib/types/seo'
-import Seo from '@/lib/components/Seo'
+import { Metas } from 'lib/types/seo'
+import Seo from 'lib/components/Seo'
 
 export default function BlogSeo() {
   const metas: Metas = {

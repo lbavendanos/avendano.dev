@@ -1,4 +1,4 @@
-import { cn } from '@/lib/utils/helpers'
+import { cn } from 'lib/utils/helpers'
 import React from 'react'
 
 export interface ContainerProps extends React.ComponentPropsWithRef<'div'> {}

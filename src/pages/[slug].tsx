@@ -3,7 +3,7 @@ import path from 'path'
 import matter from 'gray-matter'
 import readingTime from 'reading-time'
 import { serialize } from 'next-mdx-remote/serialize'
-import { Article } from '@/lib/types/article'
+import { Article } from 'lib/types/article'
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import ArticleModule from '@/modules/article/ArticleModule'
 

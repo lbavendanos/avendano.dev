@@ -1,4 +1,4 @@
-import { cn } from '@/lib/utils/helpers'
+import { cn } from 'lib/utils/helpers'
 import { useRouter } from 'next/router'
 import Link, { LinkProps } from 'next/link'
 

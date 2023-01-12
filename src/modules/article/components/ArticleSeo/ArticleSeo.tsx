@@ -1,5 +1,5 @@
 import { useArticleContext } from '../../contexts'
-import Seo from '@/lib/components/Seo'
+import Seo from 'lib/components/Seo'
 
 export default function ArticleSeo() {
   const { article } = useArticleContext()

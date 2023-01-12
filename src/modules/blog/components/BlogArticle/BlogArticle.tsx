@@ -1,4 +1,4 @@
-import { Article } from '@/lib/types/article'
+import { Article } from 'lib/types/article'
 import Link from 'next/link'
 
 interface BlogArticleProps {

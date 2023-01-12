@@ -1,5 +1,5 @@
-import { cn } from '@/lib/utils/helpers'
-import Container from '@/lib/components/Container'
+import { cn } from 'lib/utils/helpers'
+import Container from 'lib/components/Container'
 import BaseLayoutFooterSpotifyNow from '../BaseLayoutFooterSpotifyNow'
 
 interface BaseLayoutFooterProps

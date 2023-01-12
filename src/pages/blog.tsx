@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
-import { Article, Articles } from '@/lib/types/article'
+import { Article, Articles } from 'lib/types/article'
 import { InferGetStaticPropsType } from 'next'
 import BlogModule from '@/modules/blog/BlogModule'
 

@@ -1,6 +1,6 @@
-import { cn } from '@/lib/utils/helpers'
-import Container from '@/lib/components/Container'
-import Separator from '@/lib/components/Separator'
+import { cn } from 'lib/utils/helpers'
+import Container from 'lib/components/Container'
+import Separator from 'lib/components/Separator'
 import BaseLayoutFooter from './components/BaseLayoutFooter'
 import BaseLayoutNavbar from './components/BaseLayoutNavbar'
 

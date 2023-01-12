@@ -1,5 +1,5 @@
-import { getCurrentlyPlaying } from '@/lib/utils/spotify'
-import { CurrentlyPlayingResponse } from '@/lib/types/spotify'
+import { getCurrentlyPlaying } from 'lib/utils/spotify'
+import { CurrentlyPlayingResponse } from 'lib/types/spotify'
 
 export const config = {
   runtime: 'experimental-edge',

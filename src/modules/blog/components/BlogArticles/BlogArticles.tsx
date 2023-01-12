@@ -1,4 +1,4 @@
-import { Articles } from '@/lib/types/article'
+import { Articles } from 'lib/types/article'
 import BlogArticle from '../BlogArticle'
 
 interface BlogArticlesProps {

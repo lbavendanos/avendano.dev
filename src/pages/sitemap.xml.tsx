@@ -1,4 +1,4 @@
-import { url } from '@/lib/utils/url'
+import { url } from 'lib/utils/url'
 import { GetServerSidePropsContext } from 'next'
 
 function createSitemap(slugs: string[]) {

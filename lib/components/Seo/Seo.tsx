@@ -1,9 +1,9 @@
-import { url } from '@/lib/utils/url'
-import { config } from '@/lib/utils/helpers'
+import { url } from 'lib/utils/url'
+import { config } from 'lib/utils/helpers'
 import { useMemo } from 'react'
-import { objClear } from '@/lib/utils/object'
+import { objClear } from 'lib/utils/object'
 import { useRouter } from 'next/router'
-import { Metas } from '@/lib/types/seo'
+import { Metas } from 'lib/types/seo'
 import Head from 'next/head'
 
 export type SeoMeta = React.ComponentPropsWithoutRef<'meta'>
