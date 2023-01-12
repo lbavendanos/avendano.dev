@@ -41,7 +41,7 @@ export function objGet<T = any>(
  * @template T - The type of object and return value
  * @param {T} object - The source object.
  * @param {(value: any) => boolean} check - The function invoked per property.
- * @returns {T} Returns the new object.
+ * @returns {T} Returns a new object.
  */
 export function objOmitBy<T extends object>(
   object: T,
@@ -62,7 +62,7 @@ export function objOmitBy<T extends object>(
  *
  * @template T - The type of object and return value
  * @param {T} object - The source object.
- * @returns {T} Return the new object
+ * @returns {T} Returns a new object.
  */
 export function objClear<T extends object>(object: T): T {
   return objOmitBy<T>(object, blank)
