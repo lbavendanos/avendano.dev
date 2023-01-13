@@ -1,11 +1,25 @@
+import { url } from 'lib/utils/url'
 import { useArticleContext } from '../../contexts'
 import Seo from 'lib/components/Seo'
 
 export default function ArticleSeo() {
   const { article } = useArticleContext()
-  const { title, description, url, image, createdAt } = article
 
   return (
-    <Seo metas={{ title, description, url, image, publishedAt: createdAt }} />
+    <Seo
+      title={article.title}
+      description={article.description}
+      openGraph={{
+        url: url(article.slug),
+        images: [
+          {
+            url: url(article.image),
+          },
+        ],
+        article: {
+          publishedTime: article.createdAt,
+        },
+      }}
+    />
   )
 }

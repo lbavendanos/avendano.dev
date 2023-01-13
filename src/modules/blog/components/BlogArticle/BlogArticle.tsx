@@ -6,10 +6,10 @@ interface BlogArticleProps {
 }
 
 export default function BlogArticle({ article }: BlogArticleProps) {
-  if (!article.url) return null
+  if (!article.slug) return null
 
   return (
-    <Link href={article.url} className="w-full">
+    <Link href={article.slug} className="w-full">
       {article.title && (
         <h4 className="w-full mb-2 text-lg font-medium text-gray-900 md:text-xl dark:text-gray-100">
           {article.title}

@@ -15,7 +15,7 @@ export async function getStaticProps() {
     const readFile = fs.readFileSync(articleFilePath)
     const { data } = matter(readFile)
 
-    return { ...(data as Article), url: slug }
+    return { ...(data as Article), slug }
   })
 
   return {

@@ -42,7 +42,7 @@ export async function getStaticProps({
 
   const article: Article = {
     ...(articleData as Article),
-    url: params?.slug,
+    slug: params?.slug,
     readingTime: readTimeResults.text,
     mdxRemoteSerializeResult: mdxSource,
   }

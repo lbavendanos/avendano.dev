@@ -1,7 +1,7 @@
 export interface Article {
   title?: string
   description?: string
-  url?: string
+  slug?: string
   image?: string
   readingTime?: string
   mdxRemoteSerializeResult?: MDXRemoteSerializeResult<
