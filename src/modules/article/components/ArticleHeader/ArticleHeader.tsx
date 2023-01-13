@@ -1,5 +1,5 @@
 import { cn, config } from 'lib/utils/helpers'
-import { dtFormat, dtParse } from 'lib/utils/date'
+import { dtFormat, dtParseISO } from 'lib/utils/date'
 import { useArticleContext } from '../../contexts'
 import Image from 'next/image'
 
@@ -40,8 +40,8 @@ export default function ArticleHeader() {
             {article.createdAt && (
               <>
                 {' / '}
-                <time itemProp="datePublished">
-                  {dtFormat(dtParse(article.createdAt), 'MMMM dd, yyyy')}
+                <time itemProp="datePublished" dateTime={article.createdAt}>
+                  {dtFormat(dtParseISO(article.createdAt), 'MMMM dd, yyyy')}
                 </time>
               </>
             )}
