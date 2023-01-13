@@ -10,6 +10,7 @@ export default function ArticleSeo() {
       title={article.title}
       description={article.description}
       openGraph={{
+        type: 'article',
         url: url(article.slug),
         images: [
           {
