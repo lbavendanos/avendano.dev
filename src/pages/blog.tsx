@@ -8,8 +8,8 @@ import BlogModule from '@/modules/blog/BlogModule'
 export const ARTICLES_PATH = path.join(process.cwd(), '/database/articles')
 
 export async function getStaticProps() {
-  const files = fs.readdirSync(ARTICLES_PATH)
-  const articles: Articles = files.map((fileName): Article => {
+  const articlesPath = fs.readdirSync(ARTICLES_PATH)
+  const articles: Articles = articlesPath.map((fileName): Article => {
     const slug = fileName.replace('.mdx', '')
     const articleFilePath = path.join(ARTICLES_PATH, `${slug}.mdx`)
     const readFile = fs.readFileSync(articleFilePath)
