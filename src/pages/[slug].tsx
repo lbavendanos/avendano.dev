@@ -30,8 +30,7 @@ export async function getStaticProps({
 
   const { content: articleContent, data: articleData } = matter(articleBuffer)
 
-  const readTimeResults = readingTime(articleContent)
-  const mdxSource = await serialize(articleContent, {
+  const mdxRemote = await serialize(articleContent, {
     scope: articleData,
     parseFrontmatter: true,
     mdxOptions: {
@@ -43,8 +42,8 @@ export async function getStaticProps({
   const article: Article = {
     ...(articleData as Article),
     slug: params?.slug,
-    readingTime: readTimeResults.text,
-    mdxRemoteSerializeResult: mdxSource,
+    readingTime: readingTime(articleContent).text,
+    mdxRemote,
   }
 
   return {

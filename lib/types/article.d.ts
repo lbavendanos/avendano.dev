@@ -4,7 +4,7 @@ export interface Article {
   slug?: string
   image?: string
   readingTime?: string
-  mdxRemoteSerializeResult?: MDXRemoteSerializeResult<
+  mdxRemote?: MDXRemoteSerializeResult<
     Record<string, unknown>,
     Record<string, string>
   >
