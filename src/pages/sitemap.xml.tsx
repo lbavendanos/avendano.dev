@@ -1,5 +1,9 @@
+import fs from 'fs'
+import path from 'path'
 import { url } from 'lib/utils/url'
 import { GetServerSidePropsContext } from 'next'
+
+export const ARTICLES_PATH = path.join(process.cwd(), '/database/articles')
 
 function createSitemap(slugs: string[]) {
   return `<?xml version="1.0" encoding="UTF-8"?>
@@ -18,9 +22,12 @@ function createSitemap(slugs: string[]) {
 }
 
 export async function getServerSideProps({ res }: GetServerSidePropsContext) {
-  const pages: string[] = ['', 'blog']
-  const posts: string[] = []
-  const slugs = [...pages, ...posts]
+  const articlesPath = fs.readdirSync(ARTICLES_PATH)
+  const articleSlugs = articlesPath.map((fileName) =>
+    fileName.replace('.mdx', '')
+  )
+  const pages = ['', 'blog']
+  const slugs = [...pages, ...articleSlugs]
 
   res.setHeader('Content-Type', 'text/xml')
   res.setHeader(
