@@ -14,6 +14,7 @@ export default function Seo({
 }: SeoProps) {
   const router = useRouter()
   const appName = config<string>('app.name')
+  const appTwitter = config('app.twitter')
 
   const canonical = canonicalProp || url(router.asPath)
 
@@ -34,7 +35,7 @@ export default function Seo({
 
   const twitter: Twitter = {
     cardType: 'summary_large_image',
-    site: '@lbavendanos',
+    site: appTwitter,
     ...twitterProp,
   }
 
