@@ -1,8 +1,12 @@
+import { config } from 'lib/utils/helpers'
+
 export default function HomeOverview() {
+  const appName = config('app.name')
+
   return (
     <div className="flex flex-col">
       <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-1 text-black dark:text-white">
-        Luis Avendaño
+        {appName}
       </h1>
       <h2 className="text-gray-700 dark:text-gray-200 mb-4">
         Software Developer

@@ -13,7 +13,7 @@ export default function ArticleSeo() {
       title: article.title || '',
       description: article.description || '',
       url: url(article.slug),
-      image: url(article.image),
+      image: url(`/api/og?title=${article.title}`),
       datePublished: article.createdAt || new Date().toISOString(),
       authorName: config<string>('app.name'),
     }),
