@@ -1,20 +1,10 @@
-import fs from 'fs'
-import path from 'path'
-import matter from 'gray-matter'
-import readingTime from 'reading-time'
 import { serialize } from 'next-mdx-remote/serialize'
-import { Article } from 'lib/types/article'
+import { getAllArticleSlugs, getArticle } from 'lib/utils/article'
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import ArticleModule from '@/modules/article/ArticleModule'
 
-export const ARTICLES_PATH = path.join(process.cwd(), '/database/articles')
-
 export async function getStaticPaths() {
-  const paths = fs
-    .readdirSync(ARTICLES_PATH)
-    .filter((path) => /\.mdx?$/.test(path))
-    .map((path) => path.replace(/\.mdx?$/, ''))
-    .map((slug) => ({ params: { slug } }))
+  const paths = getAllArticleSlugs().map((slug) => ({ params: { slug } }))
 
   return {
     paths,
@@ -25,13 +15,19 @@ export async function getStaticPaths() {
 export async function getStaticProps({
   params,
 }: GetStaticPropsContext<{ slug: string }>) {
-  const articlePath = path.join(ARTICLES_PATH, `${params?.slug}.mdx`)
-  const articleBuffer = fs.readFileSync(articlePath)
+  if (!params?.slug)
+    return {
+      notFound: true,
+    }
 
-  const { content: articleContent, data: articleData } = matter(articleBuffer)
+  const article = getArticle(params.slug)
 
-  const mdxRemote = await serialize(articleContent, {
-    scope: articleData,
+  if (!article.content)
+    return {
+      notFound: true,
+    }
+
+  const mdxRemote = await serialize(article.content, {
     parseFrontmatter: true,
     mdxOptions: {
       remarkPlugins: [],
@@ -39,16 +35,12 @@ export async function getStaticProps({
     },
   })
 
-  const article: Article = {
-    ...(articleData as Article),
-    slug: params?.slug,
-    readingTime: readingTime(articleContent).text,
-    mdxRemote,
-  }
-
   return {
     props: {
-      article,
+      article: {
+        ...article,
+        mdxRemote,
+      },
     },
   }
 }

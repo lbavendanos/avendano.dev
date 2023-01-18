@@ -7,6 +7,7 @@ export interface Article {
     Record<string, unknown>,
     Record<string, string>
   >
+  content?: string
   createdAt?: string
 }
 
