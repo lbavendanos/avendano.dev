@@ -1,11 +1,18 @@
 import { cn, config } from 'lib/utils/helpers'
-import { dtFormat, dtParseISO } from 'lib/utils/date'
 import { useArticleContext } from '../../contexts'
 import Image from 'next/image'
 
 export default function ArticleHeader() {
   const { article } = useArticleContext()
   const appName = config('app.name')
+
+  const createdAt = article.createdAt ? new Date(article.createdAt) : new Date()
+  const createdAtISO = createdAt.toISOString()
+  const formattedCreatedAt = new Intl.DateTimeFormat('en-US', {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric',
+  }).format(createdAt)
 
   return (
     <header>
@@ -40,8 +47,8 @@ export default function ArticleHeader() {
             {article.createdAt && (
               <>
                 {' / '}
-                <time itemProp="datePublished" dateTime={article.createdAt}>
-                  {dtFormat(dtParseISO(article.createdAt), 'MMMM dd, yyyy')}
+                <time itemProp="datePublished" dateTime={createdAtISO}>
+                  {formattedCreatedAt}
                 </time>
               </>
             )}
