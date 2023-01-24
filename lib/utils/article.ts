@@ -2,6 +2,8 @@ import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 import readingTime from 'reading-time'
+import { config } from './helpers'
+import { objClear } from './object'
 import { Article, Articles } from 'lib/types/article'
 
 const ARTICLES_PATH = '/database/articles'
@@ -14,12 +16,22 @@ export function getArticle(slug: string): Article {
 
   const { content, data } = matter(buffer)
 
-  return {
+  const formattedCreatedAt = data.createdAt
+    ? new Intl.DateTimeFormat('en-US', {
+        month: 'long',
+        day: 'numeric',
+        year: 'numeric',
+        timeZone: config<string>('app.timezone'),
+      }).format(new Date(data.createdAt))
+    : null
+
+  return objClear({
     ...(data as Article),
     slug,
     readingTime: readingTime(content).text,
     content,
-  }
+    formattedCreatedAt,
+  })
 }
 
 export function getAllArticleSlugs(): string[] {

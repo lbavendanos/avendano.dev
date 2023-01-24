@@ -8,7 +8,8 @@ export interface Article {
     Record<string, string>
   >
   content?: string
-  createdAt?: string
+  createdAt?: string | null
+  formattedCreatedAt?: string | null
 }
 
 export type Articles = Article[]

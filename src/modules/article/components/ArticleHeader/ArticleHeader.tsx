@@ -6,14 +6,6 @@ export default function ArticleHeader() {
   const { article } = useArticleContext()
   const appName = config('app.name')
 
-  const createdAt = article.createdAt ? new Date(article.createdAt) : new Date()
-  const createdAtISO = createdAt.toISOString()
-  const formattedCreatedAt = new Intl.DateTimeFormat('en-US', {
-    month: 'long',
-    day: 'numeric',
-    year: 'numeric',
-  }).format(createdAt)
-
   return (
     <header>
       {article.title && (
@@ -44,11 +36,11 @@ export default function ArticleHeader() {
           />
           <p className="ml-2 text-sm text-gray-700 dark:text-gray-300">
             {appName}
-            {article.createdAt && (
+            {article.createdAt && article.formattedCreatedAt && (
               <>
                 {' / '}
-                <time itemProp="datePublished" dateTime={createdAtISO}>
-                  {formattedCreatedAt}
+                <time itemProp="datePublished" dateTime={article.createdAt}>
+                  {article.formattedCreatedAt}
                 </time>
               </>
             )}
