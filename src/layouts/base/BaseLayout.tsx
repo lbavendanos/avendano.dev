@@ -1,8 +1,8 @@
 import { cn } from 'lib/utils/helpers'
 import Container from 'lib/components/Container'
 import Separator from 'lib/components/Separator'
-import BaseLayoutFooter from './components/BaseLayoutFooter'
-import BaseLayoutNavbar from './components/BaseLayoutNavbar'
+import BaseNavbar from './components/BaseNavbar'
+import BaseFooter from './components/BaseFooter'
 
 export interface BaseLayoutProps {
   children?: React.ReactNode
@@ -18,12 +18,12 @@ export default function BaseLayout({ children }: BaseLayoutProps) {
     >
       <header>
         <Container>
-          <BaseLayoutNavbar />
+          <BaseNavbar />
         </Container>
       </header>
       <main className="grow">{children}</main>
       <Separator />
-      <BaseLayoutFooter className="mt-auto" />
+      <BaseFooter className="mt-auto" />
     </div>
   )
 }

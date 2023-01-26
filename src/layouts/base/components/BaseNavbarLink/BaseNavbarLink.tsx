@@ -2,14 +2,14 @@ import { cn } from 'lib/utils/helpers'
 import { useRouter } from 'next/router'
 import Link, { LinkProps } from 'next/link'
 
-interface BaseLayoutNavbarLinkProps extends LinkProps {
+interface BaseNavbarLinkProps extends LinkProps {
   children?: React.ReactNode
 }
 
-export default function BaseLayoutNavbarLink({
+export default function BaseNavbarLink({
   href,
   ...props
-}: BaseLayoutNavbarLinkProps) {
+}: BaseNavbarLinkProps) {
   const router = useRouter()
   const isActive = router.asPath === href
 

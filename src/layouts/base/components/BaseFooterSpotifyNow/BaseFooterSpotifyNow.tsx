@@ -1,7 +1,7 @@
 import { useSWR } from 'lib/utils/swr'
 import { NowPlayingSong } from 'lib/types/spotify'
 
-export default function BaseLayoutFooterSpotifyNow() {
+export default function BaseFooterSpotifyNow() {
   const { data } = useSWR<NowPlayingSong>('/api/spotify/now')
 
   return (

@@ -2,7 +2,7 @@ import { cn } from 'lib/utils/helpers'
 import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
 
-export default function BaseLayoutNavbarThemeButton() {
+export default function BaseNavbarThemeButton() {
   const { resolvedTheme, setTheme } = useTheme()
 
   const [mounted, setMounted] = useState(false)
