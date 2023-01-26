@@ -4,6 +4,7 @@ import type { AppProps } from 'next/app'
 import 'styles/app.css'
 
 const inter = Inter({
+  subsets: ['latin'],
   variable: '--font-inter',
 })
 
