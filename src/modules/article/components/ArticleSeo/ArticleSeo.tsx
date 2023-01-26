@@ -2,8 +2,8 @@ import { url } from 'lib/utils/url'
 import { config } from 'lib/utils/helpers'
 import { useMemo } from 'react'
 import { useArticleContext } from '../../contexts'
-import Seo from 'lib/components/Seo'
-import SeoArticleJsonLd from 'lib/components/SeoArticleJsonLd'
+import Seo from '@/common/components/Seo'
+import SeoArticleJsonLd from '@/common/components/SeoArticleJsonLd'
 
 export default function ArticleSeo() {
   const { article } = useArticleContext()

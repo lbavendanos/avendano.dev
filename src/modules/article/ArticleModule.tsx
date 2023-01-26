@@ -1,5 +1,5 @@
 import { Article } from 'lib/types/article'
-import Container from 'lib/components/Container'
+import Container from '@/common/components/Container'
 import ArticleSeo from './components/ArticleSeo'
 import BaseLayout from '@/layouts/base'
 import ArticleBody from './components/ArticleBody'

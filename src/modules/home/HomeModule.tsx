@@ -1,5 +1,5 @@
 import HomeSeo from './components/HomeSeo'
-import Container from 'lib/components/Container'
+import Container from '@/common/components/Container'
 import BaseLayout from '@/layouts/base'
 import HomeOverview from './components/HomeOverview'
 

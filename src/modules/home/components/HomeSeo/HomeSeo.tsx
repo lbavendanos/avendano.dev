@@ -1,4 +1,4 @@
-import Seo from 'lib/components/Seo'
+import Seo from '@/common/components/Seo'
 
 export default function HomeSeo() {
   return (

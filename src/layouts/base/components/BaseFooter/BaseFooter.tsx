@@ -1,5 +1,5 @@
 import { cn } from 'lib/utils/helpers'
-import Container from 'lib/components/Container'
+import Container from '@/common/components/Container'
 import BaseFooterSpotifyNow from '../BaseFooterSpotifyNow'
 
 interface BaseFooterProps extends React.ComponentPropsWithoutRef<'footer'> {}

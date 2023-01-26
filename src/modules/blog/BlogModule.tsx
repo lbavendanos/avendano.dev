@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react'
 import { Articles } from 'lib/types/article'
 import BlogSeo from './components/BlogSeo'
-import Container from 'lib/components/Container'
+import Container from '@/common/components/Container'
 import BaseLayout from '@/layouts/base'
 import BlogArticles from './components/BlogArticles'
 import BlogOverview from './components/BlogOverview'
