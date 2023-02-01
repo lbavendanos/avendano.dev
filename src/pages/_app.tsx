@@ -3,17 +3,19 @@ import { ThemeProvider } from 'next-themes'
 import type { AppProps } from 'next/app'
 import 'styles/app.css'
 
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
-})
+const inter = Inter()
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <ThemeProvider attribute="class">
-      <main className={`${inter.variable} font-sans`}>
+    <>
+      <style jsx global>{`
+        :root {
+          --font-inter: ${inter.style.fontFamily};
+        }
+      `}</style>
+      <ThemeProvider attribute="class">
         <Component {...pageProps} />
-      </main>
-    </ThemeProvider>
+      </ThemeProvider>
+    </>
   )
 }
